@@ -1,0 +1,5 @@
+[cinnabar]
+  helper = /home/dkl/git-cinnabar/git-cinnabar-helper
+[user]
+  name = David Lawrence
+  email = dkl@mozilla.com

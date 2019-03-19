@@ -1,0 +1,11 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: upgrade all packages
+      dnf:
+        name: "*"
+        state: latest
+  tasks:
+    - include: tasks/packages.yml
+    - include: tasks/users.yml
+    - include: tasks/dotfiles.yml

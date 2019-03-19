@@ -1,0 +1,47 @@
+- name: Git checkout libphutil
+  git:
+    repo: https://github.com/phacility/libphutil.git
+    dest: /home/dkl/libphutil
+
+- name: Git checkout arcanist
+  git:
+    repo: https://github.com/phacility/arcanist.git
+    dest: /home/dkl/arcanist
+
+- name: Git checkout cinnabarc
+  git:
+    repo: https://github.com/mozilla-conduit/arcanist.git
+    dest: /home/dkl/cinnabarc
+
+- name: Git checkout and install git-cinnabar
+  shell: |
+    git clone https://github.com/glandium/git-cinnabar.git --branch master --single-branch /home/dkl/git-cinnabar
+    export PATH=/home/dkl/git-cinnabar:$PATH
+    cd /home/dkl/git-cinnabar && git cinnabar download
+
+- name: Mercurial checkout of phabricator-qa-dev repo
+  hg:
+    repo: https://hg.mozilla.org/automation/phabricator-qa-dev
+    dest: /home/dkl/phabricator-qa-dev
+
+- name: Mercurial checkout of phabricator-qa-dev using git-cinnabar wrapper
+  shell: PATH=/home/dkl/git-cinnabar:$PATH git clone hg::https://hg.mozilla.org/automation/phabricator-qa-dev /home/dkl/phabricator-qa-dev-cinnabar
+
+- name: Copy dotfiles
+  copy:
+    src: /ansible/dotfiles/{{ item }}
+    dest: /home/dkl
+    owner: dkl
+    group: dkl
+    mode: 0644
+  with_items:
+    - .bashrc
+    - .gitconfig
+    - .hgrc
+
+- name: Chown all home dir files to dkl.dkl
+  file:
+    dest: /home/dkl
+    owner: dkl
+    group: dkl
+    recurse: yes

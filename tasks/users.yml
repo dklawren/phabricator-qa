@@ -1,0 +1,13 @@
+- name: create user 'dkl'
+  user:
+    name: dkl
+    uid: 1000
+    state: present
+
+- name: copy sudoers_dkl
+  copy:
+    src: files/sudoers_dkl
+    dest: /etc/sudoers.d/dkl
+    owner: root
+    group: root
+    mode: 0440

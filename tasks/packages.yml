@@ -1,0 +1,11 @@
+- name: Install packages
+  dnf:
+    name:
+      - git
+      - mercurial
+      - php
+      - php-curl
+      - php-json
+      - python-requests
+      - xz
+    state: present
