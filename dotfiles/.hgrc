@@ -1,24 +1,37 @@
-# example user config (see 'hg help config' for more info)
 [ui]
-# name and email, e.g.
-# username = Jane Doe <jdoe@example.com>
-username = dkl
+username = phab
 
-# We recommend enabling tweakdefaults to get slight improvements to
-# the UI over time. Make sure to set HGPLAIN in the environment when
-# writing scripts!
-# tweakdefaults = True
+[revsetalias]
+wip = (parents(not public()) or not public() or . or head()) and not obsolete() and not closed()
 
-# uncomment to disable color in command output
-# (see 'hg help color' for details)
-# color = never
+[templates]
+wip = '{label("log.branch", ifeq(branch, "default", "", branch))} {label("changeset.{phase}", rev)} {label("grep.user", author|user)}{label("log.tag", if(tags," {tags}"))} {bookmarks % "{ifeq(bookmark, currentbookmark, label('log.activebookmark', bookmark), label('log.bookmark', bookmark))} "}\n{label(ifcontains(rev, revset('parents()'), 'desc.here'),desc|firstline)}'
 
-# uncomment to disable command output pagination
-# (see 'hg help pager' for details)
-# paginate = never
+[extensions]
+color=
 
-# [extensions]
-# uncomment these lines to enable some popular extensions
-# (see 'hg help extensions' for more info)
-#
-# churn =
+[color]
+mode=terminfo
+
+#Custom colours
+color.orange=202
+color.lightyellow=191
+color.darkorange=220
+color.brightyellow=226
+
+#Colours for each label
+log.branch=cyan
+log.summary=lightyellow
+log.description=lightyellow
+log.bookmark=green
+log.tag=darkorange
+log.activebookmark = green bold underline
+
+changeset.public=orange bold
+changeset.secret=blue bold
+changeset.draft=brightyellow bold
+
+desc.here=bold blue_background
+
+[alias]
+wip = log --graph --rev=wip --template=wip
