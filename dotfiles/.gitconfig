@@ -1,5 +1,5 @@
 [cinnabar]
-  helper = /home/dkl/git-cinnabar/git-cinnabar-helper
+  helper = /home/phab/.mozbuild/git-cinnabar/git-cinnabar-helper
 [user]
-  name = David Lawrence
-  email = dkl@mozilla.com
+  name = Phabricator User
+  email = phab@mozilla.tld

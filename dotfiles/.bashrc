@@ -12,11 +12,8 @@ then
 fi
 export PATH
 export EDITOR=vi
-export PATH=/home/dkl/git-cinnabar:$PATH
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+export PATH="$HOME/.mozbuild/git-cinnabar:$HOME/.mozbuild/arcanist/bin:$HOME/.mozbuild/moz-phab:$PATH"
 
 # User specific aliases and functions
-alias arc='/home/dkl/arcanist/bin/arc'
-alias cinnabarc='/home/dkl/cinnabarc/bin/arc'
+alias arc="$HOME/.mozbuild/arcanist/bin/arc"
+alias cinnabarc="$HOME/.mozbuild/cinnabarc/bin/arc"
