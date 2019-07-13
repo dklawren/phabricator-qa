@@ -5,13 +5,13 @@
 # This Source Code Form is "Incompatible With Secondary Licenses", as
 # defined by the Mozilla Public License, v. 2.0.
 
-FROM fedora:29
+FROM fedora:30
 MAINTAINER David Lawrence <dkl@mozilla.com>
 
-ENV USER dkl
+ENV USER phab
 
 # Packages
-RUN dnf -y -q install ansible sudo && dnf clean all
+RUN dnf install -q -y ansible sudo && dnf clean all
 
 # Ansible
 COPY . /ansible
