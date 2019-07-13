@@ -1,13 +1,14 @@
-- name: create user 'dkl'
+- name: create user 'phab'
   user:
-    name: dkl
+    name: phab
     uid: 1000
+    shell: /bin/bash
     state: present
 
-- name: copy sudoers_dkl
+- name: copy sudoers_phab
   copy:
-    src: files/sudoers_dkl
-    dest: /etc/sudoers.d/dkl
+    src: files/sudoers_phab
+    dest: /etc/sudoers.d/phab
     owner: root
     group: root
     mode: 0440

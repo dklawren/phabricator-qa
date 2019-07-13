@@ -1,11 +1,14 @@
 - name: Install packages
   dnf:
-    name:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
       - git
       - mercurial
       - php
       - php-curl
       - php-json
-      - python-requests
+      - python
+      - vim
       - xz
-    state: present
