@@ -1,45 +1,7 @@
-- name: Git checkout libphutil
-  git:
-    repo: https://github.com/phacility/libphutil.git
-    dest: /home/phab/.mozbuild/libphutil
-
-- name: Git checkout arcanist
-  git:
-    repo: https://github.com/phacility/arcanist.git
-    dest: /home/phab/.mozbuild/arcanist
-
-- name: Git checkout cinnabarc
-  git:
-    repo: https://github.com/mozilla-conduit/arcanist.git
-    dest: /home/phab/.mozbuild/cinnabarc
-
-- name: Git checkout and install git-cinnabar
-  shell: |
-    git clone https://github.com/glandium/git-cinnabar.git --branch master --single-branch /home/phab/.mozbuild/git-cinnabar
-    export PATH=/home/phab/.mozbuild/git-cinnabar:$PATH
-    cd /home/phab/.mozbuild/git-cinnabar && git cinnabar download
-
 - name: Mercurial checkout of phabricator-qa-dev repo
   hg:
     repo: https://hg.mozilla.org/automation/phabricator-qa-dev
     dest: /home/phab/phabricator-qa-dev
-
-- name: Mercurial checkout of phabricator-qa-dev using git-cinnabar wrapper
-  shell: PATH=/home/phab/.mozbuild/git-cinnabar:$PATH git clone hg::https://hg.mozilla.org/automation/phabricator-qa-dev /home/phab/phabricator-qa-dev-cinnabar
-
-- name: Create /home/phab/.mozbuild/moz-phab
-  file:
-    dest: /home/phab/.mozbuild/moz-phab
-    mode: 0755
-    owner: phab
-    group: phab
-    state: directory
-
-- name: Checkout moz-phab code review wrapper
-  get_url:
-    url: https://raw.githubusercontent.com/mozilla-conduit/review/a35696157c060cbc7a5a600f4d033f07b6c18da9/moz-phab
-    dest: /home/phab/.mozbuild/moz-phab/moz-phab
-    mode: 0755
 
 - name: Copy dotfiles
   copy:

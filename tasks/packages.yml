@@ -9,6 +9,21 @@
       - php
       - php-curl
       - php-json
-      - python
+      - python3
+      - python3-pip
       - vim
       - xz
+
+- name: Install moz-phab
+  pip:
+    name: MozPhab
+
+- name: Git checkout libphutil
+  git:
+    repo: https://github.com/phacility/libphutil.git
+    dest: /home/phab/.mozbuild/moz-phab/libphutil
+
+- name: Git checkout arcanist
+  git:
+    repo: https://github.com/phacility/arcanist.git
+    dest: /home/phab/.mozbuild/moz-phab/arcanist
