@@ -5,7 +5,7 @@
 # This Source Code Form is "Incompatible With Secondary Licenses", as
 # defined by the Mozilla Public License, v. 2.0.
 
-FROM fedora:32
+FROM fedora:33
 MAINTAINER David Lawrence <dkl@mozilla.com>
 
 ENV USER phab

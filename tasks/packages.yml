@@ -4,7 +4,9 @@
     state: present
   vars:
     packages:
+      - diffutils
       - git
+      - jq
       - mercurial
       - php
       - php-curl
@@ -17,13 +19,3 @@
 - name: Install moz-phab
   pip:
     name: MozPhab
-
-- name: Git checkout libphutil
-  git:
-    repo: https://github.com/phacility/libphutil.git
-    dest: /home/phab/.mozbuild/moz-phab/libphutil
-
-- name: Git checkout arcanist
-  git:
-    repo: https://github.com/phacility/arcanist.git
-    dest: /home/phab/.mozbuild/moz-phab/arcanist
