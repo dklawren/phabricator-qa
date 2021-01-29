@@ -4,7 +4,9 @@
     state: present
   vars:
     packages:
+      - diffutils
       - git
+      - jq
       - mercurial
       - php
       - php-curl
@@ -13,3 +15,7 @@
       - python3-pip
       - vim
       - xz
+
+- name: Install moz-phab
+  pip:
+    name: MozPhab
